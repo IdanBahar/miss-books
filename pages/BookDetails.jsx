@@ -27,7 +27,12 @@ export function BookDetails() {
   }
 
   console.log('Render', params)
-  if (!book) return <div>Loading...</div>
+  if (!book)
+    return (
+      <div className='loader-container'>
+        <div className='loader'></div>
+      </div>
+    )
   return (
     <section className='book-details'>
       <h1>Book Title: {book.title}</h1>

@@ -19,3 +19,16 @@
   display: block;
   margin: auto;
 }
+.book-info {
+  list-style: none;
+  padding: 0;
+  margin: 0.5rem 0 1rem;
+  font-size: 0.85rem;
+  color: #555;
+  width: 100%;
+}
+
+.book-info li {
+  margin-bottom: 0.3rem;
+  line-height: 1.4;
+}

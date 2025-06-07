@@ -12,11 +12,17 @@ export function BookList({ books, onRemoveBook }) {
           {/* {console.log('hi:', book)} */}
           <BookPreview book={book} />
           <section className='btn-group'>
-            <button onClick={() => onRemoveBook(book.id)}> Remove</button>
-            <Link to={`/book/${book.id}`}>
-              <button>Details</button>
+            <Link
+              to={`/book/${book.id}`}
+              className='btn-link details action-btn'
+            >
+              Details
             </Link>
-            <button>Edit</button>
+
+            <button className='remove' onClick={() => onRemoveBook(book.id)}>
+              Remove
+            </button>
+            <button className='edit'>Edit</button>
           </section>
         </li>
       ))}
