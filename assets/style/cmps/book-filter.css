@@ -1,15 +1,72 @@
+:root {
+  --clr-bg: #f9f9fb;
+  --clr-card: #ffffff;
+  --clr-primary: #4a90e2;
+  --clr-secondary: #7b8a8b;
+  --clr-text: #2c3e50;
+  --clr-border: #e0e0e0;
+  --radius: 0.75rem;
+  --shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  --transition: 0.25s ease;
+}
 .book-filter {
-  background-color: var(--clr2bg);
-  padding: 1.2em;
-  margin-block: 0.5em 1em;
+  font-family: 'Inter', sans-serif;
+
+  background-color: var(--clr-card);
+  padding: 1.5rem;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  margin: 1.5rem auto;
+  width: min(95%, 600px);
+}
+.book-filter h2 {
+  font-size: 1.5rem;
+  color: var(--clr-text);
+  margin-bottom: 1rem;
+  text-align: center;
 }
 
 .book-filter form {
   display: grid;
-  grid-template-columns: 100px 200px;
-  gap: 0.3em;
+  grid-template-columns: 1fr 2fr;
+  gap: 1rem;
+  align-items: center;
+}
+
+.book-filter label {
+  color: var(--clr-secondary);
+  font-weight: 500;
+}
+
+.book-filter input,
+.book-filter select {
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--clr-border);
+  border-radius: var(--radius);
+  font-size: 1rem;
+  transition: var(--transition);
+}
+
+.book-filter input:focus,
+.book-filter select:focus {
+  outline: none;
+  border-color: var(--clr-primary);
+  box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.2);
 }
 
 .book-filter form button {
-  margin-inline: 0;
+  grid-column: 1 / -1;
+  justify-self: end;
+  padding: 0.6rem 1.2rem;
+  background-color: var(--clr-primary);
+  color: white;
+  border: none;
+  border-radius: var(--radius);
+  font-weight: bold;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.book-filter form button:hover {
+  background-color: #357ab8;
 }

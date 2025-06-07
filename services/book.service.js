@@ -18,8 +18,11 @@ function query(filterBy = {}) {
       const regExp = new RegExp(filterBy.txt, 'i')
       books = books.filter((book) => regExp.test(book.title))
     }
-    if (filterBy.id) {
-      books = books.filter((book) => book.id >= filterBy.id)
+    // if (filterBy.id) {
+    //   books = books.filter((book) => book.id >= filterBy.id)
+    // }
+    if (filterBy.maxPrice) {
+      books = books.filter((book) => book.listPrice.amount <= filterBy.maxPrice)
     }
     return books
   })
