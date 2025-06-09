@@ -9,7 +9,6 @@ export function BookList({ books, onRemoveBook }) {
         <li key={book.id}>
           {book.listPrice.isOnSale && <span className='sale-badge'>SALE</span>}
 
-          {/* {console.log('hi:', book)} */}
           <BookPreview book={book} />
           <section className='btn-group'>
             <Link
