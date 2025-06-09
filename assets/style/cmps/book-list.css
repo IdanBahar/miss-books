@@ -167,4 +167,9 @@
   .book-list img {
     max-height: 180px;
   }
+  /* .app-header {
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
+  } */
 }

@@ -2,14 +2,17 @@ const { Link } = ReactRouterDOM
 
 import { BookPreview } from './BookPreview.jsx'
 
-export function BookList({ books, onRemoveBook }) {
+export function BookList({ books, onRemoveBook, filterTxt }) {
+  {
+    console.log('📘 filterTxt:', filterTxt)
+  }
   return (
     <ul className='book-list'>
       {books.map((book) => (
-        <li key={book.id}>
+        <li key={book.id} className={book.listPrice.isOnSale ? 'on-sale' : ''}>
           {book.listPrice.isOnSale && <span className='sale-badge'>SALE</span>}
 
-          <BookPreview book={book} />
+          <BookPreview book={book} filterTxt={filterTxt} />
           <section className='btn-group'>
             <Link
               to={`/book/${book.id}`}

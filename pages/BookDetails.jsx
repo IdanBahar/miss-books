@@ -36,7 +36,7 @@ export function BookDetails() {
   return (
     <section className='book-details'>
       <h1>Book Title: {book.title}</h1>
-      <h1>Book Discription: {book.description}</h1>
+      <h2>Book Discription: {book.description}</h2>
       <p>
         Lorem, ipsum dolor sit amet consectetur adipisicing elit. Facilis quae
         fuga eveniet, quisquam ducimus modi optio in alias accusantium corrupti

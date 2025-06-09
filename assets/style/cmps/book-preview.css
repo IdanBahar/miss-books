@@ -31,3 +31,11 @@
   border-bottom-left-radius: 0.5rem;
   z-index: 10;
 }
+mark {
+  background-color: transparent;
+  color: #3c657b;
+  font-weight: 600;
+}
+li.on-sale {
+  background-color: aliceblue;
+}

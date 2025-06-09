@@ -9,21 +9,33 @@
   --shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
   --transition: 0.25s ease;
 }
+
 .book-filter {
   font-family: 'Inter', sans-serif;
-
   background-color: var(--clr-card);
   padding: 1.5rem;
   border-radius: var(--radius);
   box-shadow: var(--shadow);
   margin: 1.5rem auto;
   width: min(95%, 600px);
+  transition: var(--transition), transform 0.25s ease;
 }
+
+.book-filter:hover {
+  box-shadow: 0 8px 24px rgba(74, 144, 226, 0.2);
+  transform: translateY(-2px);
+}
+
 .book-filter h2 {
-  font-size: 1.5rem;
-  color: var(--clr-text);
-  margin-bottom: 1rem;
+  font-size: 1.6rem;
+  color: #4dd0e1;
+  margin-bottom: 1.2rem;
   text-align: center;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  font-weight: 600;
+  border-bottom: 1px solid rgba(77, 208, 225, 0.2);
+  padding-bottom: 0.5rem;
 }
 
 .book-filter form {
