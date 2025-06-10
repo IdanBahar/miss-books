@@ -3,7 +3,12 @@ export function BookFilter({ filterBy, onSetFilter }) {
   const [filterByToEdit, setFilterByToEdit] = useState(filterBy)
 
   useEffect(() => {
-    onSetFilter(filterByToEdit)
+    const timeoutId = setTimeout(() => {
+      onSetFilter(filterByToEdit)
+    }, 500)
+    return () => {
+      clearTimeout(timeoutId)
+    }
   }, [filterByToEdit])
 
   function handleChange({ target }) {
@@ -19,23 +24,10 @@ export function BookFilter({ filterBy, onSetFilter }) {
     }
     setFilterByToEdit((prevFilter) => ({ ...prevFilter, [field]: value }))
   }
-  function onResetFilter(e) {
-    // e.preventDefault
+  function onResetFilter() {
     const defaultFilter = { txt: '', maxPrice: 0, categories: '' }
     setFilterByToEdit(defaultFilter)
   }
-
-  /* 
-    function handleTxtChange({ target }) {
-        const value = target.value
-        setFilterByToEdit(prevFilter => ({ ...prevFilter, txt: value }))
-    }
-    
-    function handleMinSpeedChange({ target }) {
-        const value = target.value
-        setFilterByToEdit(prevFilter => ({ ...prevFilter, minSpeed: value }))
-    }
-    */
 
   const { txt, maxPrice } = filterByToEdit
   return (
