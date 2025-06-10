@@ -19,6 +19,11 @@ export function BookFilter({ filterBy, onSetFilter }) {
     }
     setFilterByToEdit((prevFilter) => ({ ...prevFilter, [field]: value }))
   }
+  function onResetFilter(e) {
+    // e.preventDefault
+    const defaultFilter = { txt: '', maxPrice: 0, categories: '' }
+    setFilterByToEdit(defaultFilter)
+  }
 
   /* 
     function handleTxtChange({ target }) {
@@ -54,6 +59,21 @@ export function BookFilter({ filterBy, onSetFilter }) {
           type='number'
           id='maxPrice'
         />
+        <label htmlFor='categories'>Genre</label>
+        <select
+          onChange={handleChange}
+          name='categories'
+          id='categories'
+          value={filterByToEdit.categories || ''}
+        >
+          <option value=''>All</option>
+          <option value='Fiction'>Fiction</option>
+          <option value='Religion'>Religion</option>
+          <option value='Poetry'>Poetry</option>
+          <option value='Computers'>Computers</option>
+          <option value='Love'>Love</option>
+        </select>
+        <button onClick={onResetFilter}>Reset Filters</button>
       </form>
     </section>
   )

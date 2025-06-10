@@ -69,16 +69,29 @@
 .book-filter form button {
   grid-column: 1 / -1;
   justify-self: end;
-  padding: 0.6rem 1.2rem;
-  background-color: var(--clr-primary);
+  /* padding: 0.6rem 1.2rem; */
+  /* background-color: var(--clr-primary); */
   color: white;
   border: none;
-  border-radius: var(--radius);
+  /* border-radius: var(--radius); */
   font-weight: bold;
   cursor: pointer;
   transition: var(--transition);
+
+  color: rgb(255, 255, 255);
+  font-size: 1rem;
+  padding: 0.5rem 1.2rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 5px;
+  background: rgba(79, 194, 247, 0.499);
+  backdrop-filter: blur(6px);
+  box-shadow: 0 4px 10px rgba(2, 136, 209, 0.2);
+  transition: all 0.3s ease;
 }
 
 .book-filter form button:hover {
-  background-color: #357ab8;
+  background: rgba(129, 212, 250, 0.728);
+  box-shadow: 0 6px 14px rgba(2, 136, 209, 0.3);
+  /* transform: translateY(-2px); */
+  cursor: pointer;
 }
