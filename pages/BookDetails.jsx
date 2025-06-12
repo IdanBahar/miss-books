@@ -45,9 +45,10 @@ export function BookDetails() {
         <div className='loader'></div>
       </div>
     )
-  console.log(bookDateLevel(book.publishedDate))
+
   return (
-    <section className='book-details'>
+    <section className={`book-details `}>
+      {book.listPrice.isOnSale && <span className='sale-badge'>SALE</span>}
       <section>
         <Link to={`/book/${book.prevBookId}`}>
           <button className='btn-next-previous'>Previous</button>
@@ -56,7 +57,7 @@ export function BookDetails() {
           <button className='btn-next-previous'>Next</button>
         </Link>
       </section>
-      <h1>Book Title: {book.title}</h1>
+      <h1>{book.title}</h1>
       <div>
         {bookDateLevel(book.publishedDate) && (
           <p>{bookDateLevel(book.publishedDate)}</p>

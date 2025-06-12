@@ -13,6 +13,7 @@ export function BookPreview({ book, filterTxt }) {
 
       {/* <h4>Book id: {book.id}</h4> */}
       <img src={book.thumbnail} alt='book-image' />
+      <p>{book.listPrice.amount + ' ' + book.listPrice.currencyCode}</p>
     </article>
   )
 }

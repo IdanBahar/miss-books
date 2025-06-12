@@ -3,9 +3,6 @@ const { Link } = ReactRouterDOM
 import { BookPreview } from './BookPreview.jsx'
 
 export function BookList({ books, onRemoveBook, filterTxt }) {
-  {
-    console.log('📘 filterTxt:', filterTxt)
-  }
   return (
     <ul className='book-list'>
       {books.map((book) => (
@@ -20,11 +17,13 @@ export function BookList({ books, onRemoveBook, filterTxt }) {
             >
               Details
             </Link>
-
             <button className='remove' onClick={() => onRemoveBook(book.id)}>
               Remove
             </button>
-            <button className='edit'>Edit</button>
+
+            <Link to={`/book/edit/${book.id}`} className='edit'>
+              <button className='edit'>Edit</button>
+            </Link>
           </section>
         </li>
       ))}

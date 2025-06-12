@@ -10,6 +10,7 @@ export const bookService = {
   remove,
   save,
   getDefaultFilter,
+  getEmptyBook,
 }
 
 function query(filterBy = {}) {
@@ -45,8 +46,21 @@ function save(book) {
   }
 }
 
-function getEmptyBook(title = '', description = '') {
-  return { title, description }
+function getEmptyBook() {
+  return {
+    title: '',
+    description: '',
+    authors: [''],
+    pageCount: 0,
+    categories: ['Fiction'],
+    language: 'en',
+    thumbnail: `https://picsum.photos/200/300?random=${Date.now()}`,
+    listPrice: {
+      amount: 0,
+      currencyCode: 'EUR',
+      isOnSale: false,
+    },
+  }
 }
 
 function getDefaultFilter() {
@@ -93,6 +107,7 @@ function _createBook() {
       pageCount: utilService.getRandomIntInclusive(20, 600),
       categories: [ctgs[utilService.getRandomIntInclusive(0, ctgs.length - 1)]],
       thumbnail: `https://covers.openlibrary.org/b/id/${i + 100}-M.jpg`,
+      // thumbnail: `http://coding-academy.org/books-photos/${i + 1}.jpg`,
       language: 'en',
       listPrice: {
         amount: utilService.getRandomIntInclusive(80, 500),

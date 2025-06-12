@@ -42,13 +42,29 @@
   object-fit: cover;
   border-radius: var(--radius);
   margin-bottom: 1rem;
+  /* flex: 50%; */
 }
 
-.book-list h3 {
-  font-size: 1.1rem;
+.book-list h2 {
+  font-size: 1.3rem;
   color: var(--clr-text);
-  margin: 0.3rem 0;
+  margin: 0.3rem 0 20px;
   text-align: center;
+  flex: 50%;
+  min-height: 3.5em;
+  display: flex;
+  align-items: center;
+
+  color: #0288d1;
+  /* font-weight: bold; */
+  display: inline;
+  word-break: break-word;
+}
+
+.book-list h2 mark {
+  color: #0288d1;
+
+  text-decoration: underline;
 }
 
 .book-list .price {
@@ -128,10 +144,9 @@
   border-bottom-left-radius: 0.5rem;
   z-index: 10;
 }
-
 @media (max-width: 768px) {
   .book-list {
-    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
     gap: 1rem;
   }
 
@@ -155,7 +170,8 @@
 
 @media (max-width: 480px) {
   .book-list {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
     padding-inline: 0.5rem;
   }
 
@@ -167,9 +183,4 @@
   .book-list img {
     max-height: 180px;
   }
-  /* .app-header {
-    padding: 0.5rem;
-    display: flex;
-    flex-direction: column;
-  } */
 }
