@@ -45,9 +45,7 @@ export function BookIndex() {
     )
   return (
     <section className='book-index'>
-      <section>
-        <Link to='/book/edit'>Add Book</Link>
-      </section>
+      <section></section>
       <BookFilter onSetFilter={onSetFilter} filterBy={filterBy} />
       <BookList
         books={books}

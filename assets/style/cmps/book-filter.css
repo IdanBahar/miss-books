@@ -12,10 +12,19 @@
 
 .book-filter {
   font-family: 'Inter', sans-serif;
-  background-color: var(--clr-card);
+  background: linear-gradient(
+    145deg,
+    rgba(13, 29, 48, 0.9),
+    rgba(10, 20, 35, 0.9)
+  );
+
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15), 0 0 10px rgba(0, 188, 212, 0.08);
+  backdrop-filter: blur(6px);
+  transition: all 0.3s ease;
   padding: 1.5rem;
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
+
   margin: 1.5rem auto;
   width: min(95%, 600px);
   transition: var(--transition), transform 0.25s ease;
@@ -43,10 +52,11 @@
   grid-template-columns: 1fr 2fr;
   gap: 1rem;
   align-items: center;
+  color: black;
 }
-
 .book-filter label {
-  color: var(--clr-secondary);
+  font-size: 1rem;
+  color: #fff;
   font-weight: 500;
 }
 
@@ -67,31 +77,22 @@
 }
 
 .book-filter form button {
-  grid-column: 1 / -1;
-  justify-self: end;
-  /* padding: 0.6rem 1.2rem; */
-  /* background-color: var(--clr-primary); */
+  grid-column: 1 / 1;
+  justify-self: start;
   color: white;
   border: none;
-  /* border-radius: var(--radius); */
   font-weight: bold;
   cursor: pointer;
   transition: var(--transition);
-
   color: rgb(255, 255, 255);
-  font-size: 1rem;
-  padding: 0.5rem 1.2rem;
   border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 5px;
   background: rgba(79, 194, 247, 0.499);
-  backdrop-filter: blur(6px);
   box-shadow: 0 4px 10px rgba(2, 136, 209, 0.2);
-  transition: all 0.3s ease;
 }
-
-.book-filter form button:hover {
-  background: rgba(129, 212, 250, 0.728);
-  box-shadow: 0 6px 14px rgba(2, 136, 209, 0.3);
-  /* transform: translateY(-2px); */
-  cursor: pointer;
+button .reset-btn {
+  justify-items: start !important;
+}
+.add-book-btn {
+  justify-self: end;
 }

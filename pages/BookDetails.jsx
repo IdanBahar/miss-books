@@ -49,7 +49,7 @@ export function BookDetails() {
   return (
     <section className={`book-details `}>
       {book.listPrice.isOnSale && <span className='sale-badge'>SALE</span>}
-      <section>
+      <section className='btn-next-previous-container'>
         <Link to={`/book/${book.prevBookId}`}>
           <button className='btn-next-previous'>Previous</button>
         </Link>

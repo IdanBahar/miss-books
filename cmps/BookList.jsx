@@ -21,7 +21,7 @@ export function BookList({ books, onRemoveBook, filterTxt }) {
               Remove
             </button>
 
-            <Link to={`/book/edit/${book.id}`} className='edit'>
+            <Link to={`/book/edit/${book.id}`}>
               <button className='edit'>Edit</button>
             </Link>
           </section>

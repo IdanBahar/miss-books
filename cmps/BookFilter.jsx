@@ -1,3 +1,5 @@
+const { Link, useSearchParams } = ReactRouterDOM
+
 const { useState, useEffect } = React
 export function BookFilter({ filterBy, onSetFilter }) {
   const [filterByToEdit, setFilterByToEdit] = useState(filterBy)
@@ -33,6 +35,7 @@ export function BookFilter({ filterBy, onSetFilter }) {
   return (
     <section className='book-filter'>
       <h2>Filter Our Books</h2>
+
       <form>
         <label htmlFor='txt'>Title</label>
         <input
@@ -65,7 +68,13 @@ export function BookFilter({ filterBy, onSetFilter }) {
           <option value='Computers'>Computers</option>
           <option value='Love'>Love</option>
         </select>
-        <button onClick={onResetFilter}>Reset Filters</button>
+
+        <button onClick={onResetFilter} className='reset-btn'>
+          Reset Filters
+        </button>
+        <Link to='/book/edit' className='add-book-btn'>
+          <button>Add Book</button>
+        </Link>
       </form>
     </section>
   )
