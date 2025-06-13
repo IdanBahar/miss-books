@@ -88,11 +88,6 @@ function _createBooks() {
   }
 }
 
-// function _createBook(vendor, speed = 250) {
-//   const book = getEmptyBook(vendor, speed)
-//   book.id = makeId()
-//   return book
-// }
 function _createBook() {
   const ctgs = ['Love', 'Fiction', 'Poetry', 'Computers', 'Religion']
   const books = []

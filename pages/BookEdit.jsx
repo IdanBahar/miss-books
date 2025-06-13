@@ -1,11 +1,12 @@
 import { bookService } from '../services/book.service.js'
+import { showSuccessMsg } from '../services/event-bus.service.js'
 
 const { useState, useEffect } = React
 const { useNavigate, useParams } = ReactRouterDOM
 
 export function BookEdit() {
-  const [bookToEdit, setBookToEdit] = useState(bookService.getEmptyBook())
   const { bookId } = useParams()
+  const [bookToEdit, setBookToEdit] = useState(bookService.getEmptyBook())
   const navigate = useNavigate()
 
   useEffect(() => {
@@ -15,10 +16,13 @@ export function BookEdit() {
   function loadBook() {
     bookService
       .get(bookId)
-      .then((book) => setBookToEdit(book))
+      .then((book) => {
+        setBookToEdit(book)
+      })
+
       .catch((err) => {
         console.log('Problem getting book', err)
-        // navigate()
+        navigate()
       })
   }
 
@@ -61,9 +65,13 @@ export function BookEdit() {
       .save(bookToEdit)
       .then((savedBook) => {
         console.log('savedBook:', savedBook)
+        showSuccessMsg(bookId ? 'Saved succesfully!' : 'Added succesfully!')
         navigate('/book')
       })
       .catch((err) => console.log('err:', err))
+  }
+  function onBack() {
+    navigate('/book')
   }
 
   const { title, description, categories, authors, pageCount, language } =
@@ -168,6 +176,7 @@ export function BookEdit() {
         />
 
         <button>Save</button>
+        <button onClick={onBack}>Cancel</button>
       </form>
     </section>
   )

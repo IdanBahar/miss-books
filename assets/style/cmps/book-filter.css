@@ -79,16 +79,23 @@
 .book-filter form button {
   grid-column: 1 / 1;
   justify-self: start;
-  color: white;
-  border: none;
-  font-weight: bold;
   cursor: pointer;
-  transition: var(--transition);
-  color: rgb(255, 255, 255);
+
   border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 5px;
-  background: rgba(79, 194, 247, 0.499);
+
   box-shadow: 0 4px 10px rgba(2, 136, 209, 0.2);
+  color: #fff;
+  padding: 0.4rem 0.8rem;
+  border-radius: 6px;
+  background: rgba(79, 195, 247, 0.15);
+  transition: background-color 0.2s ease, color 0.2s ease;
+  font-family: 'Inter', sans-serif;
+}
+.book-filter form button:hover {
+  background: rgba(129, 212, 250, 0.25);
+  box-shadow: 0 6px 14px rgba(2, 136, 209, 0.3);
+  transform: translateY(-2px);
+  cursor: pointer;
 }
 button .reset-btn {
   justify-items: start !important;
