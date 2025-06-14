@@ -6,12 +6,16 @@ const { useNavigate, useParams } = ReactRouterDOM
 
 export function BookEdit() {
   const { bookId } = useParams()
-  const [bookToEdit, setBookToEdit] = useState(bookService.getEmptyBook())
+  const [bookToEdit, setBookToEdit] = useState(null)
   const navigate = useNavigate()
 
   useEffect(() => {
-    if (bookId) loadBook()
-  }, [])
+    if (bookId) {
+      loadBook()
+    } else {
+      setBookToEdit(bookService.getEmptyBook())
+    }
+  }, [bookId])
 
   function loadBook() {
     bookService
@@ -73,7 +77,12 @@ export function BookEdit() {
   function onBack() {
     navigate('/book')
   }
-
+  if (!bookToEdit)
+    return (
+      <div className='loader-container'>
+        <div className='loader'></div>
+      </div>
+    )
   const { title, description, categories, authors, pageCount, language } =
     bookToEdit
   const price = (bookToEdit.listPrice && bookToEdit.listPrice.amount) || ''
