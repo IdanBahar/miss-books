@@ -11,6 +11,8 @@ export const bookService = {
   save,
   getDefaultFilter,
   getEmptyBook,
+  addReview,
+  removeReview,
 }
 
 function query(filterBy = {}) {
@@ -66,7 +68,21 @@ function getEmptyBook() {
 function getDefaultFilter() {
   return { txt: '', maxPrice: 0, categories: '' }
 }
-
+function addReview(bookId, review) {
+  return get(bookId).then((book) => {
+    if (!book.reviews) book.reviews = []
+    review.id = makeId()
+    book.reviews.push(review)
+    return save(book)
+  })
+}
+function removeReview(bookId, reviewId) {
+  return get(bookId).then((book) => {
+    if (!book.reviews) return Promise.reject('No Reviews Found!')
+    book.reviews = book.reviews.filter((review) => review.id !== reviewId)
+    return save(book)
+  })
+}
 function _setNextPrevBookId(book) {
   return query().then((books) => {
     const bookIdx = books.findIndex((currBook) => currBook.id === book.id)

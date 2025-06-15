@@ -8,9 +8,15 @@ export function AppHeader() {
       </div>
 
       <nav>
-        <NavLink to='/'>Home</NavLink>
-        <NavLink to='/about'>About</NavLink>
-        <NavLink to='/book'>Books</NavLink>
+        <NavLink to='/'>
+          <i class='fa-solid fa-house'> Home</i>
+        </NavLink>
+        <NavLink to='/about'>
+          <i class='fa-solid fa-address-card'> About</i>
+        </NavLink>
+        <NavLink to='/book'>
+          <i class='fa-solid fa-book'> Books</i>
+        </NavLink>
       </nav>
     </header>
   )

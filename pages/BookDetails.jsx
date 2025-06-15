@@ -3,6 +3,10 @@ const { useState, useEffect } = React
 const { useParams, useNavigate, Link } = ReactRouterDOM
 import { LongTxt } from '../cmps/LongTxt.jsx'
 
+import AddReview from '../cmps/AddReview.jsx'
+import ReviewList from '../cmps/ReviewList.jsx'
+import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service.js'
+
 export function BookDetails() {
   const [book, setBook] = useState(null)
   const params = useParams()
@@ -37,6 +41,12 @@ export function BookDetails() {
   function onBack() {
     navigate('/book')
   }
+  function onRemoveReview(reviewId) {
+    bookService
+      .removeReview(book.id, reviewId)
+      .then(loadBook)
+      .then(() => showSuccessMsg('Review removed successfully!'))
+  }
 
   // console.log('Render', params)
   if (!book)
@@ -51,10 +61,14 @@ export function BookDetails() {
       {book.listPrice.isOnSale && <span className='sale-badge'>SALE</span>}
       <section className='btn-next-previous-container'>
         <Link to={`/book/${book.prevBookId}`}>
-          <button className='btn-next-previous'>Previous</button>
+          <button className='btn-next-previous'>
+            <i class='fa-sharp-duotone fa-solid fa-backward'></i>
+          </button>
         </Link>
         <Link to={`/book/${book.nextBookId}`}>
-          <button className='btn-next-previous'>Next</button>
+          <button className='btn-next-previous'>
+            <i class='fa-sharp-duotone fa-solid fa-forward'></i>
+          </button>
         </Link>
       </section>
       <h1>{book.title}</h1>
@@ -105,6 +119,8 @@ export function BookDetails() {
       <button className='btn-next-previous' onClick={onBack}>
         Back
       </button>
+      <AddReview bookId={book.id} onReviewAdded={loadBook} />
+      <ReviewList book={book} onRemoveReview={onRemoveReview} />
     </section>
   )
 }

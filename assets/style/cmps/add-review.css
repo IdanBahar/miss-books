@@ -1,0 +1,93 @@
+.review-form {
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  gap: 10px;
+}
+.review-form input,
+button {
+  background: rgba(79, 195, 247, 0.15);
+  backdrop-filter: blur(6px);
+  box-shadow: 0 4px 10px rgba(2, 136, 209, 0.2);
+  font-size: 1rem;
+  padding: 0.5rem 1.2rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 5px;
+  transition: all 0.3s ease;
+  color: white;
+}
+.review-form input:focus {
+  background: rgba(129, 212, 250, 0.25);
+  box-shadow: 0 6px 14px rgba(2, 136, 209, 0.3);
+  transform: translateY(-2px);
+  cursor: pointer;
+  outline: none;
+}
+.review-form button {
+  display: block;
+  grid-column: 1/4;
+}
+.review-form button:hover {
+  background: rgba(129, 212, 250, 0.25);
+  box-shadow: 0 6px 14px rgba(2, 136, 209, 0.3);
+  transform: translateY(-2px);
+  cursor: pointer;
+  outline: none;
+}
+.review-form select {
+  text-align: center;
+  width: 150px;
+  color: white;
+  outline: none;
+  font-size: 1rem;
+  padding: 0.5rem 1.2rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 5px;
+  background: rgba(79, 195, 247, 0.15);
+  backdrop-filter: blur(6px);
+  box-shadow: 0 4px 10px rgba(2, 136, 209, 0.2);
+  transition: all 0.3s ease;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+.review-form select:focus {
+  background: rgba(129, 212, 250, 0.25);
+  box-shadow: 0 6px 14px rgba(2, 136, 209, 0.3);
+  transform: translateY(-2px);
+  cursor: pointer;
+}
+.review-form button {
+  align-self: flex-end;
+}
+h4 {
+  font-family: 'Montserrat Alternates', sans-serif;
+}
+
+@media (max-width: 750px) {
+  .review-form h4 {
+    margin-bottom: 10px;
+  }
+
+  .review-form {
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    width: 80vw;
+    gap: 30px;
+  }
+
+  .review-form input,
+  .review-form select {
+    width: 80%;
+    box-sizing: border-box;
+  }
+
+  .review-form button {
+    /* width: 80%; */
+    /* align-self: stretch; */
+    justify-self: center;
+    grid-column: 1/4;
+  }
+  .review-form label {
+    grid-column: 1/4;
+    align-items: center;
+  }
+}
