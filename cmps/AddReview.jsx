@@ -58,6 +58,7 @@ export default function AddReview({ bookId, onReviewAdded }) {
             name='readAt'
             id='readAt'
             onChange={handleChange}
+            max={new Date().toISOString().split('T')[0]}
             required
           />
         </label>
