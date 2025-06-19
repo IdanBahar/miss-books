@@ -76,6 +76,11 @@ h4 {
   color: gold;
 }
 @media (max-width: 750px) {
+  .star {
+    display: inline-block;
+    padding: 0.5rem;
+    touch-action: manipulation;
+  }
   .review-form h4 {
     margin-bottom: 10px;
   }

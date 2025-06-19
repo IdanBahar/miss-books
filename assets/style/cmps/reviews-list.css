@@ -12,6 +12,7 @@
   grid-template-columns: 150px 150px 150px auto;
   gap: 10px;
   justify-self: self-start;
+  border-bottom: 1px solid #4dd0e1;
 }
 .review-fullname {
   font-family: Georgia, serif;

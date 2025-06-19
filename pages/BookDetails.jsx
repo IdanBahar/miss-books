@@ -62,12 +62,12 @@ export function BookDetails() {
       <section className='btn-next-previous-container'>
         <Link to={`/book/${book.prevBookId}`}>
           <button className='btn-next-previous'>
-            <i class='fa-sharp-duotone fa-solid fa-backward'></i>
+            <i className='fa-sharp-duotone fa-solid fa-backward'></i>
           </button>
         </Link>
         <Link to={`/book/${book.nextBookId}`}>
           <button className='btn-next-previous'>
-            <i class='fa-sharp-duotone fa-solid fa-forward'></i>
+            <i className='fa-sharp-duotone fa-solid fa-forward'></i>
           </button>
         </Link>
       </section>
