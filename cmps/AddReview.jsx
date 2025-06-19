@@ -3,8 +3,9 @@ import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service.js'
 const { useState, useEffect } = React
 
 export default function AddReview({ bookId, onReviewAdded }) {
-  const [review, setReview] = useState({ fullname: '', rating: '', readAt: '' })
-  // console.log('bookService:', bookService)
+  const [review, setReview] = useState({ fullname: '', rating: 0, readAt: '' })
+  const [selectedRating, setSelectedRating] = useState(0)
+  const [hoverRating, setHoverRating] = useState(0)
 
   function handleChange({ target }) {
     const { name, value } = target
@@ -17,7 +18,8 @@ export default function AddReview({ bookId, onReviewAdded }) {
       .addReview(bookId, review)
       .then(() => {
         showSuccessMsg('Review add successfully!')
-        setReview({ fullname: '', rating: '', readAt: '' })
+        setReview({ fullname: '', rating: 0, readAt: '' })
+        setSelectedRating(0)
         if (onReviewAdded) onReviewAdded()
       })
       .catch((e) => {
@@ -41,14 +43,24 @@ export default function AddReview({ bookId, onReviewAdded }) {
         <label htmlFor='review'>
           <h4>Review</h4>
 
-          <select name='rating' id='rating' onChange={handleChange} required>
-            <option value=''>Choose rating</option>
-            <option value='1'>⭐️</option>
-            <option value='2'>⭐️⭐️</option>
-            <option value='3'>⭐️⭐️⭐️</option>
-            <option value='4'>⭐️⭐️⭐️⭐️</option>
-            <option value='5'>⭐️⭐️⭐️⭐️⭐️</option>
-          </select>
+          <div className='star-rating'>
+            {[1, 2, 3, 4, 5].map((star) => (
+              <span
+                key={star}
+                className={`star ${
+                  hoverRating >= star || selectedRating >= star ? 'filled' : ''
+                }`}
+                onMouseEnter={() => setHoverRating(star)}
+                onMouseLeave={() => setHoverRating(0)}
+                onClick={() => {
+                  setSelectedRating(star)
+                  handleChange({ target: { name: 'rating', value: star } })
+                }}
+              >
+                <i className='fa-solid fa-star'></i>
+              </span>
+            ))}
+          </div>
         </label>
         <label htmlFor='readAt' className='readAt'>
           <h4>Read At</h4>
