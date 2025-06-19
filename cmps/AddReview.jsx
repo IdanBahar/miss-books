@@ -52,7 +52,8 @@ export default function AddReview({ bookId, onReviewAdded }) {
                 }`}
                 onMouseEnter={() => setHoverRating(star)}
                 onMouseLeave={() => setHoverRating(0)}
-                onClick={() => {
+                onClick={(e) => {
+                  e.preventDefault()
                   setSelectedRating(star)
                   handleChange({ target: { name: 'rating', value: star } })
                 }}
