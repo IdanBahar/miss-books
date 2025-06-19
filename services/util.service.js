@@ -67,3 +67,12 @@ export function loadFromStorage(key) {
   const data = localStorage.getItem(key)
   return data ? JSON.parse(data) : undefined
 }
+export function debounce(func, time = 500) {
+  let timeoutId
+  return (...args) => {
+    clearTimeout(timeoutId)
+    timeoutId = setTimeout(() => {
+      func(...args)
+    }, time)
+  }
+}

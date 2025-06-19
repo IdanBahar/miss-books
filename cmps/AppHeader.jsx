@@ -9,13 +9,16 @@ export function AppHeader() {
 
       <nav>
         <NavLink to='/'>
-          <i class='fa-solid fa-house'> Home</i>
+          <i className='fa-solid fa-house'> Home</i>
         </NavLink>
         <NavLink to='/about'>
-          <i class='fa-solid fa-address-card'> About</i>
+          <i className='fa-solid fa-address-card'> About</i>
         </NavLink>
         <NavLink to='/book'>
-          <i class='fa-solid fa-book'> Books</i>
+          <i className='fa-solid fa-book'> Books</i>
+        </NavLink>
+        <NavLink to='/book/add'>
+          <i className='fa-solid fa-book'> Google Books</i>
         </NavLink>
       </nav>
     </header>

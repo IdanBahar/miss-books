@@ -5,7 +5,6 @@ const { useState, useEffect } = React
 export default function AddReview({ bookId, onReviewAdded }) {
   const [review, setReview] = useState({ fullname: '', rating: '', readAt: '' })
   // console.log('bookService:', bookService)
-  useEffect(() => {}, [])
 
   function handleChange({ target }) {
     const { name, value } = target

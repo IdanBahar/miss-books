@@ -1,16 +1,14 @@
+import { debounce } from '../services/util.service.js'
+
 const { Link, useSearchParams } = ReactRouterDOM
 
-const { useState, useEffect } = React
+const { useState, useEffect, useRef } = React
 export function BookFilter({ filterBy, onSetFilter }) {
   const [filterByToEdit, setFilterByToEdit] = useState(filterBy)
+  const onSetFilterDebounce = useRef(debounce(onSetFilter, 400)).current
 
   useEffect(() => {
-    const timeoutId = setTimeout(() => {
-      onSetFilter(filterByToEdit)
-    }, 500)
-    return () => {
-      clearTimeout(timeoutId)
-    }
+    onSetFilterDebounce(filterByToEdit)
   }, [filterByToEdit])
 
   function handleChange({ target }) {

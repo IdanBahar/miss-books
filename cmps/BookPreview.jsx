@@ -3,8 +3,9 @@ export function BookPreview({ book, filterTxt }) {
     if (!book.reviews || book.reviews.length === 0) return 'No Reviews Yet'
 
     const sum = book.reviews.reduce((acc, review) => acc + +review.rating, 0)
-    console.log('sum:', sum)
-    return `AVG Rating: ${(sum / book.reviews.length).toFixed(1)}`
+    const avg = Math.round(sum / book.reviews.length)
+
+    return ` ${'⭐️'.repeat(avg)}`
   }
 
   return (
