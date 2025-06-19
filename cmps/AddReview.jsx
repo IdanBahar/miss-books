@@ -48,7 +48,7 @@ export default function AddReview({ bookId, onReviewAdded }) {
               <span
                 key={star}
                 className={`star ${
-                  hoverRating >= star || selectedRating >= star ? 'filled' : ''
+                  star <= (hoverRating || selectedRating) ? 'filled' : ''
                 }`}
                 onMouseEnter={() => setHoverRating(star)}
                 onMouseLeave={() => setHoverRating(0)}
