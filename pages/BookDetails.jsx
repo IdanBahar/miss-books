@@ -9,6 +9,7 @@ import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service.js'
 
 export function BookDetails() {
   const [book, setBook] = useState(null)
+  const [reviews, setReviews] = useState([])
   const params = useParams()
   const navigate = useNavigate()
 
@@ -32,7 +33,10 @@ export function BookDetails() {
     setBook(null)
     bookService
       .get(params.bookId)
-      .then(setBook)
+      .then((book) => {
+        setBook(book)
+        setReviews(book.reviews || [])
+      })
       .catch((err) => {
         console.log('err:', err)
       })
@@ -44,8 +48,16 @@ export function BookDetails() {
   function onRemoveReview(reviewId) {
     bookService
       .removeReview(book.id, reviewId)
-      .then(loadBook)
-      .then(() => showSuccessMsg('Review removed successfully!'))
+      .then(() => {
+        setReviews((prevReviews) =>
+          prevReviews.filter((review) => review.id !== reviewId)
+        )
+        showSuccessMsg('Review removed successfully!')
+      })
+      .catch((err) => {
+        console.log('Failed to remove review:', err)
+        showErrorMsg('Failed to remove review')
+      })
   }
 
   // console.log('Render', params)
@@ -119,8 +131,13 @@ export function BookDetails() {
       <button className='btn-next-previous' onClick={onBack}>
         Back
       </button>
-      <AddReview bookId={book.id} onReviewAdded={loadBook} />
-      <ReviewList book={book} onRemoveReview={onRemoveReview} />
+      <AddReview
+        bookId={book.id}
+        onReviewAdded={(newReview) =>
+          setReviews((prev) => [...prev, newReview])
+        }
+      />
+      <ReviewList reviews={reviews} onRemoveReview={onRemoveReview} />
     </section>
   )
 }

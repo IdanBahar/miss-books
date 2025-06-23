@@ -16,11 +16,12 @@ export default function AddReview({ bookId, onReviewAdded }) {
     ev.preventDefault()
     bookService
       .addReview(bookId, review)
-      .then(() => {
+      .then((updatedBook) => {
         showSuccessMsg('Review add successfully!')
         setReview({ fullname: '', rating: 0, readAt: '' })
         setSelectedRating(0)
-        if (onReviewAdded) onReviewAdded()
+        const newReview = updatedBook.reviews.at(-1)
+        if (onReviewAdded) onReviewAdded(newReview)
       })
       .catch((e) => {
         showErrorMsg('Review add failed!')
@@ -30,7 +31,7 @@ export default function AddReview({ bookId, onReviewAdded }) {
     <section className='review-container'>
       <form className='review-form' onSubmit={onAddReview}>
         <label htmlFor='fullname'>
-          <h4>Full Name</h4>{' '}
+          <h4>Full Name</h4>
           <input
             onChange={handleChange}
             type='text'
